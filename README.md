@@ -1,5 +1,9 @@
 # Yii-Casbin
 
+[![Latest Stable Version](https://poser.pugx.org/casbin/yii-adapter/v/stable)](https://packagist.org/packages/casbin/yii-adapter)
+[![Total Downloads](https://poser.pugx.org/casbin/yii-adapter/downloads)](https://packagist.org/packages/casbin/yii-adapter)
+[![License](https://poser.pugx.org/casbin/yii-adapter/license)](https://packagist.org/packages/casbin/yii-adapter)
+
 Use Casbin in Yii 2.0 PHP Framework.
 
 ## Installation
