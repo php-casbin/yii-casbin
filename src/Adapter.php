@@ -80,6 +80,16 @@ class Adapter implements AdapterContract
 
     public function removeFilteredPolicy($sec, $ptype, $fieldIndex, ...$fieldValues)
     {
-        throw new CasbinException('not implemented');
+        $result = $this->casbinRule->where('ptype', $ptype);
+
+        foreach (range(0, 5) as $value) {
+            if ($fieldIndex <= $value && $value < $fieldIndex + count($fieldValues)) {
+                if ('' != $fieldValues[$value - $fieldIndex]) {
+                    $result->where('v'.strval($value), $fieldValues[$value - $fieldIndex]);
+                }
+            }
+        }
+        
+        return $result->delete();
     }
 }
