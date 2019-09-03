@@ -1,10 +1,12 @@
 # Yii-Casbin
 
+[![Build Status](https://travis-ci.org/php-casbin/yii-casbin.svg?branch=master)](https://travis-ci.org/php-casbin/yii-casbin)
+[![Coverage Status](https://coveralls.io/repos/github/php-casbin/yii-casbin/badge.svg)](https://coveralls.io/github/php-casbin/yii-casbin)
 [![Latest Stable Version](https://poser.pugx.org/casbin/yii-adapter/v/stable)](https://packagist.org/packages/casbin/yii-adapter)
 [![Total Downloads](https://poser.pugx.org/casbin/yii-adapter/downloads)](https://packagist.org/packages/casbin/yii-adapter)
 [![License](https://poser.pugx.org/casbin/yii-adapter/license)](https://packagist.org/packages/casbin/yii-adapter)
 
-Use Casbin in Yii 2.0 PHP Framework.
+Use [Casbin](https://github.com/php-casbin/php-casbin) in Yii 2.0 PHP Framework.
 
 ## Installation
 

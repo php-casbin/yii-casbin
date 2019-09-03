@@ -26,7 +26,7 @@ class Casbin extends Component
     public function __construct($config = [])
     {
         $this->config = $this->mergeConfig(
-            require_once dirname(__DIR__).'/config/casbin.php',
+            require dirname(__DIR__).'/config/casbin.php',
             $config
         );
 

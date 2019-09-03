@@ -3,7 +3,6 @@
 namespace CasbinAdapter\Yii;
 
 use CasbinAdapter\Yii\Models\CasbinRule;
-use Casbin\Exceptions\CasbinException;
 use Casbin\Persist\Adapter as AdapterContract;
 use Casbin\Persist\AdapterHelper;
 
@@ -40,7 +39,9 @@ class Adapter implements AdapterContract
         $rows = $ar->find()->all();
 
         foreach ($rows as $row) {
-            $line = implode(', ', array_slice(array_values($row->toArray()), 1));
+            $line = implode(', ', array_filter(array_slice($row->toArray(), 1), function ($val) {
+                return '' != $val && !is_null($val);
+            }));
             $this->loadPolicyLine(trim($line), $model);
         }
     }
@@ -69,27 +70,29 @@ class Adapter implements AdapterContract
 
     public function removePolicy($sec, $ptype, $rule)
     {
-        $result = $this->casbinRule->where('ptype', $ptype);
+        $where = [];
+        $where['ptype'] = $ptype;
 
         foreach ($rule as $key => $value) {
-            $result->where('v'.strval($key), $value);
+            $where['v'.strval($key)] = $value;
         }
 
-        return $result->delete();
+        return $this->casbinRule->deleteAll($where);
     }
 
     public function removeFilteredPolicy($sec, $ptype, $fieldIndex, ...$fieldValues)
     {
-        $result = $this->casbinRule->where('ptype', $ptype);
+        $where = [];
+        $where['ptype'] = $ptype;
 
         foreach (range(0, 5) as $value) {
             if ($fieldIndex <= $value && $value < $fieldIndex + count($fieldValues)) {
                 if ('' != $fieldValues[$value - $fieldIndex]) {
-                    $result->where('v'.strval($value), $fieldValues[$value - $fieldIndex]);
+                    $where['v'.strval($value)] = $fieldValues[$value - $fieldIndex];
                 }
             }
         }
-        
-        return $result->delete();
+
+        return $this->casbinRule->deleteAll($where);
     }
 }
