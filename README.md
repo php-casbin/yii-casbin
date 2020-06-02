@@ -6,6 +6,8 @@
 [![Total Downloads](https://poser.pugx.org/casbin/yii-adapter/downloads)](https://packagist.org/packages/casbin/yii-adapter)
 [![License](https://poser.pugx.org/casbin/yii-adapter/license)](https://packagist.org/packages/casbin/yii-adapter)
 
+> ## It is worth mentioning that we now recommend [Yii-Permission](https://github.com/php-casbin/yii-permission).
+
 Use [Casbin](https://github.com/php-casbin/php-casbin) in Yii 2.0 PHP Framework.
 
 ## Installation
